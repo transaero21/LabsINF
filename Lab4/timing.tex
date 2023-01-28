@@ -1,0 +1,27 @@
+\section{Сравнительный анализ времени}
+
+Из сравнения времени выполнения первой и второй программы
+можно сделать вывод, что для программы с библиотечными функциями
+требуется больше времени, в сравнении с локальными.
+
+\begin{table}[H]
+  \centering
+  \begin{tblr}{|Q[c,9cm]|Q[c,1.25cm]|Q[c,2.75cm]|Q[c,2.75cm]|}
+  \hline
+    Входная строка & Сдвиг & Время выполнения \texttt{1-ой} & Время выполнения \texttt{2-ой} \\
+    \hline
+    The Tsunami wave crashed against the raised houses and broke the pilings as if they were toothpicks &
+    24 & 0.001882 & 0.000309 \\
+    \hline
+    The two walked down the slot canyon oblivious to the sound of thunder in the distance &
+    56 & 0.000806 & 0.000210 \\
+    \hline
+    Green should have smelled more tranquil, but somehow it just tasted rotten &
+    12 & 0.000905 & 0.000222 \\
+    \hline
+    I always dreamed about being stranded on a desert island until it actually happened &
+    1 & 0.000430 & 0.000210 \\
+    \hline
+  \end{tblr}
+  \caption{Анализ времени}
+\end{table}
