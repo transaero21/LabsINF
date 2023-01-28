@@ -1,0 +1,40 @@
+\section{Описание тестовых примеров}
+
+Все тесты будут производить на примере данного входного файла:
+\lstinputlisting[
+  caption={файл \texttt{input.csv}.},
+  language=C,
+]{input.csv}
+
+\begin{table}[H]
+  \centering
+  \begin{tblr}{|Q[c,3cm]|Q[c,1.5cm]|Q[c,1.5cm]|Q[c,8.5cm]|}
+  \hline
+    Сортировка & Поле & Реверс & Итоговый файл \\
+    \hline
+    \texttt{qsort} & \texttt{name} & Нет &
+    Avhust Evgeni Kovalchuk, 85, 3.283400 \newline
+    Maksim Filat Sokolovsky, 42, 5.238400 \newline
+    Maxim Onufriy Shwetz, 54, 8.234600 \newline
+    Oles Artur Konstantinov, 10, 1.234700 \newline
+    Yevgeni Rustik Shvets, 83, 5.383600 \\
+    \hline
+    \texttt{odd-even} & \texttt{score} & Да &
+    Maxim Onufriy Shwetz, 54, 8.234600 \newline
+    Yevgeni Rustik Shvets, 83, 5.383600 \newline
+    Maksim Filat Sokolovsky, 42, 5.238400 \newline
+    Avhust Evgeni Kovalchuk, 85, 3.283400 \newline
+    Oles Artur Konstantinov, 10, 1.234700 \\
+    \hline
+    \texttt{double-selection} & \texttt{group} & Нет &
+    Oles Artur Konstantinov, 10, 1.234700 \newline
+    Maksim Filat Sokolovsky, 42, 5.238400 \newline
+    Maxim Onufriy Shwetz, 54, 8.234600 \newline
+    Yevgeni Rustik Shvets, 83, 5.383600 \newline
+    Avhust Evgeni Kovalchuk, 85, 3.283400 \\
+    \hline
+    % \hline
+  \end{tblr}
+  \caption{Тестовые примеры}
+\end{table}
+

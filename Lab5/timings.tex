@@ -1,0 +1,90 @@
+\section{Анализ результатов таймирования}
+
+\pgfplotsset{compat=1.9}
+\pgfplotsset{
+    qsort/.style = {green},
+    odd-even/.style = {blue},
+    double-selection/.style = {red}
+}
+
+На графике представлено среднее время сортировок в зависимости от количества сортируемых элементов.
+Для наиболее точного подсчёта среднего времени количество повторений сортировок было 30 раз.
+Такое среднее время находилось для каждого поля отдельно, а затем вычислялось среднее время.
+Так было подсчитано среднее время для всех сортировок от 50 до 10000 элементом с шагом в 10 элементов.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+                legend pos=north west,
+                axis lines=left,
+                width=0.725\textwidth,
+                xmin=50,
+                xmax=10000,
+                xtick={0,1000,...,10000},
+                scaled x ticks = false,
+                xticklabel style={rotate=90},
+                log ticks with fixed point,
+                xlabel=$n$,
+                ymin=0,
+                ymax=0.8,
+                ytick={0,0.1,...,1},
+                ylabel=$t(n)$,
+                grid=major
+            ]
+            \legend{qsort, odd-even, double-selection};
+            \addplot[qsort] table [x=size, y=qsort, col sep=comma] {src/timings.csv};
+            \addplot[odd-even] table [x=size, y=odd-even, col sep=comma] {src/timings.csv};
+            \addplot[double-selection] table [x=size, y=double-selection, col sep=comma] {src/timings.csv};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Общий график сортировок.}
+\end{figure}
+
+Для анализа результата графика приведём среднюю сложность алгоритмов сортировок:
+
+\begin{itemize}
+    \item \texttt{odd-even} - $O(n^2)$.
+    \item \texttt{double-selection} - $O(n^2 / 2)$.
+    \item \texttt{qsort} - $O(n * \log n)$.
+\end{itemize}
+
+Как видно, сортировки \texttt{odd-even} и \texttt{double-selection} имеют параболический вид, 
+а \texttt{double-selection} имеет результаты времени в два раза меньшие чем у \texttt{odd-even},
+что и понятно из приведённого списка средней сложноси выше. Из-за низкой сложность алгоритма \texttt{qsort}
+на графике в сравнении с остальными сортировки его результаты стремятся к нулю.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+                legend pos=north east,
+                axis lines=left,
+                width=0.725\textwidth,
+                xmin=50,
+                xmax=10000,
+                xtick={0,1000,...,10000},
+                scaled x ticks = false,
+                xticklabel style={rotate=90},
+                xlabel=$n$,
+                ymin=0,
+                ymax=0.015,
+                scaled y ticks = false,
+                ytick={0,0.0015,...,0.015},
+                ylabel=$t(n)$,
+                log ticks with fixed point,
+                grid=major
+            ]
+            \legend{qsort, odd-even, double-selection};
+            \addplot[qsort] table [x=size, y=qsort, col sep=comma] {src/timings.csv};
+            \addplot[odd-even] table [x=size, y=odd-even, col sep=comma] {src/timings.csv};
+            \addplot[double-selection] table [x=size, y=double-selection, col sep=comma] {src/timings.csv};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Увеличенный график сортировок.}
+\end{figure}
+
+На увеличенном графике можно увидеть насколько скорость \texttt{qsort} отличается от скорости
+остальных сортировок. Таким образом можно сделать вывод, что из тестируемых сортировок
+самая быстрая - \texttt{qsort}, а медленная - \texttt{odd-even}.
+
